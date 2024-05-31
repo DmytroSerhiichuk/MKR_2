@@ -8,4 +8,7 @@ def gallery_view(request):
     return render(request, 'gallery.html', context=data)
 
 def image_detail(request, pk):
-    ...
+    data = {
+        'image' : Image.objects.get(pk=pk)
+    }
+    return render(request, 'image_detail.html', context=data)
