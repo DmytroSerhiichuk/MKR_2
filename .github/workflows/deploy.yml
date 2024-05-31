@@ -35,9 +35,9 @@ jobs:
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
 
       - name: Load environment variables from .env file
-        uses: aws-actions/load-dotenv@v1
-        with:
-          path: .env
+        run: |
+          echo "import dotenv; dotenv.load_dotenv('.env')" > load_env.py
+          python load_env.py
       
       - name: Run tests
         run: |
